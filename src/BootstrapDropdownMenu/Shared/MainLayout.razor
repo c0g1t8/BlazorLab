@@ -1,15 +1,75 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="sidebar">
-    <NavMenu />
-</div>
+@inject NavigationManager NavigationManager
+
+<style>
+    .dropdown-menu {
+        margin-left: 20px;
+    }
+</style>
+
+<header>
+    <h1>Doctor Who&trade; Episode Database</h1>
+</header>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark" @onclick="@(() => showDropdownMenu = false)">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Logo</a>
+
+    <!-- Links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <NavLink class="nav-link" href="Counter">Counter</NavLink>
+        </li>
+        <li class="nav-item">
+            <NavLink class="nav-link" href="Fetchdata">Fetchdata</NavLink>
+        </li>
+
+        <!-- Dropdown -->
+        <li class=@Show("nav-item dropdown") @onclick="@HandleDropdownMenuClick" @onclick:stopPropagation="true">
+            <a class=@ActiveIf("nav-link dropdown-toggle")>
+                Information
+            </a>
+            <div class=@Show("dropdown-menu")>
+                <NavLink class="dropdown-item" href="Info/Page1">Information Page 1</NavLink>
+                <NavLink class="dropdown-item" href="Info/Page2">Information Page 2</NavLink>
+                <NavLink class="dropdown-item" href="Info/Page3">Information Page 3</NavLink>
+            </div>
+        </li>
+    </ul>
+</nav>
 
 <div class="main">
-    <div class="top-row px-4">
-        <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-    </div>
-
-    <div class="content px-4">
+    <div class="content">
         @Body
     </div>
 </div>
+
+<footer>
+    @TrademarkMessage
+</footer>
+
+@code {
+    public string TrademarkMessage { get; set; } =
+        "Doctor Who is a registered trademark of the BBC. " +
+        "https://www.doctorwho.tv/";
+
+    bool showDropdownMenu = false;
+
+    void HandleDropdownMenuClick()
+    {
+        showDropdownMenu ^= true;
+    }
+
+    string Show(string css)
+    {
+        return showDropdownMenu ? $"{css} show" : css;
+    }
+
+    string ActiveIf(string css)
+    {
+        Uri uri = new Uri(NavigationManager.Uri);
+
+        return uri.AbsolutePath.Contains("/Info/") ? $"{css} active" : css;
+    }
+}
