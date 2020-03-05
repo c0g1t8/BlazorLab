@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Layout Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+
+<style>
+    .logo {
+        border-style: solid;
+        border-color: red;
+    }
+
+    .toggle {
+        border-style: solid;
+        border-color: green;
+    }
+
+    .menu-bar {
+        display: block;
+    }
+
+    .menu-items {
+        border-style: solid;
+        border-color: blue;
+    }
+
+    @media screen and (min-width: 600px) {
+        .menu-bar {
+            display: flex;
+        }
+
+        .menu-items {
+            display: flex;
+        }
+
+        .toggle {
+            display: none;
+        }
+    }
+</style>
+
+<body>
+    <div class="menu-bar">
+        <div style="display: flex; flex-direction: row;">
+            <div class="logo" style="width: 100%;">logo</div>
+            <div class="toggle">toggle</div>
+        </div>
+        <div class="menu-items">
+            <div>menu item 1</div>
+            <div>menu item 1</div>
+            <div>menu item 1</div>
+            <div>menu item 1</div>
+            <div>menu item 1</div>
+            <div>menu item 1</div>
+        </div>
+    </div>
+</body>
+
+</html>

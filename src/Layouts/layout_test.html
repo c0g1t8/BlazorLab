@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Layout Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+
+<style>
+    .sidebar {
+        /* border-style: solid;
+        border-color: red; */
+        /* width: 8.33%; */
+        width: 100%;
+        float: left;
+    }
+
+    .main {
+        /* border-style: solid;
+        border-color: red; */
+        /* width: 91.66%; */
+        width: 100%;
+        float: left;
+    }
+
+    .main .jumbotron {
+        display: none;
+    }
+
+    @media only screen and (min-width: 1200px) {
+        .sidebar {
+            width: 8.33%;
+        }
+
+        .sidebar .jumbotron {
+            display: none;
+        }
+
+        .main {
+            width: 91.66%;
+        }
+
+        .main .jumbotron {
+            display: block;
+        }
+    }
+</style>
+
+<body>
+    <div class="container-fluid">
+        <h1>Version 1</h1>
+        <div class="row">
+            <div class="col-xl-1 d-none d-xl-block">
+                <div class="border">menu</div>
+            </div>
+            <div class="col-xl-11">
+                <div class="border">Jumbotron</div>
+                <div class="border d-xl-none">menu</div>
+                <div class="border">content</div>
+                <div class="border">footer</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <h1>Version 2</h1>
+        <div class="row">
+            <div class="col-xl-1">
+                <div class="border d-xl-none">Jumbotron</div>
+                <div class="border">menu</div>
+            </div>
+            <div class="col-xl-11">
+                <div class="border d-none d-xl-block">Jumbotron</div>
+                <div class="border">content</div>
+                <div class="border">footer</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="padding: 12px;">
+        <h1>Version 3</h1>
+        <div class="sidebar">
+            <div class="border jumbotron">jumbotron</div>
+            <div class="border">menu</div>
+        </div>
+        <div class="main">
+            <div class="border jumbotron">Jumbotron</div>
+            <div class="border">content</div>
+            <div class="border">footer</div>
+        </div>
+    </div>
+
+</body>
+
+</html>
